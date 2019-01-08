@@ -43,7 +43,7 @@ public class UserBasket_Controller {
 	}
 	
 	// 장바구니 상품 모두 삭제 URL
-	@DeleteMapping(value="/All")
+	@DeleteMapping
 	public void deleteAll() {
 		userbasket_Service.deleteAll_UserBasket();
 	}
