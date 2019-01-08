@@ -19,7 +19,7 @@ public class ShoppingMallApplication {
 
 	public static void main(String[] args) {
 		
-		// 이미지 업로드 하기 위해 작
+		// 이미지 업로드 하기 위해 작성
 		new java.io.File(ProductController.uploadDirectory).mkdir();
 		
 		SpringApplication.run(ShoppingMallApplication.class, args);		

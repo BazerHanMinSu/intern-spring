@@ -24,7 +24,7 @@ public class UserBasket_Controller {
 	
 	
 	// 장바구니에 데이터를 저장하기 위한 URL
-	@PostMapping(value="/create")
+	@PostMapping
 	public UserBasket createUserBasket(@RequestBody UserBasket userbasket) {
 		return userbasket_Service.createUserBasket(userbasket);
 	}
@@ -37,13 +37,13 @@ public class UserBasket_Controller {
 	
 	
 	// 장바구니 상품 선택 삭제 URL
-	@DeleteMapping(value="/delete/{userbasketID}")
+	@DeleteMapping(value="/{userbasketID}")
 	public void deleteUserBasket(@PathVariable("userbasketID")Integer userbasketID) {
 		userbasket_Service.deleteUserBasket(userbasketID);
 	}
 	
 	// 장바구니 상품 모두 삭제 URL
-	@DeleteMapping(value="/deleteAll")
+	@DeleteMapping(value="/All")
 	public void deleteAll() {
 		userbasket_Service.deleteAll_UserBasket();
 	}

@@ -1,5 +1,6 @@
 package com.naming.ShoppingMall.entities;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -7,7 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
+
+// Orders DB 정의
 
 @Entity 
 @Table(name="orders")
@@ -15,7 +19,7 @@ public class Orders {
 		
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ordersId")
+	@Column(name="ordersId", updatable = false, insertable= false)
 	private Integer ordersId;
 	
 	@Column(name="productid")
@@ -24,8 +28,8 @@ public class Orders {
 	@Column(name="quantity")
 	private Integer quantity;
 	
-	@Column(name="time", nullable = false)
-	private Date time;
+	@Column(name="time")
+	private LocalDateTime time;
 	
 	
 	public Integer getordersId() {
@@ -48,11 +52,13 @@ public class Orders {
 		this.quantity = quantity;
 	}
 	
-	public Date gettime() {
+	
+	public LocalDateTime gettime() {
 		return time;
 	}
-	public void settime(Date time) {
-		this.time = time;
+	@PrePersist											// 현재 시간 값을 고정으로 저장하기 위한 어노테이션 
+	public void settime() {
+		this.time = LocalDateTime.now();
 	}
 	
 	
@@ -61,7 +67,5 @@ public class Orders {
 		return "Orders [ordersId=" + ordersId + ", productid=" + productid + ", quantity=" + quantity
 				+ ", time=" + time + "]";
 	}
-		
-	
 
 }

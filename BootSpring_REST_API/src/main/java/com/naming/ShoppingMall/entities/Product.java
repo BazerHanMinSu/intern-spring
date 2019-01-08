@@ -13,17 +13,16 @@ import javax.persistence.Table;
 public class Product {
 		
 	
+	
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="product_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)  						// AUTO : hibernate가 키 값을 관리, IDENTITY : MySQL에서 auto_increment의 기능과 같다.		
+	@Column(name="product_id", updatable = false, insertable= false)
 	private Integer productId;
 	
 	@Column(name="product_name",nullable=false)
 	private String productName;
-	
-//	@Column(name="booking_date")
-//	private Date bookingDate;
-	
+		
 	@Column(name="product_price",nullable=false)
 	private String productPrice;
 	
